@@ -1,0 +1,26 @@
+<h1>  {{ titulo }}</h1>
+
+{% for tarea in tareas %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <a href="{{ path('lista_tareas.edit_form', {'id': tarea.id}) }}" class="btn btn-primary"> Editar</a>
+      <a href="#" class="btn btn-primary"> Eliminar</a>
+    </div>
+    <section>
+      <div class="col-sm-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title">{{ tarea.nombre }}</h1>
+            <h6 class="card-subtitle mb-2 text-muted">Fecha de entrega: {{ tarea.fecha_entrega }}</h6>
+            <p class="card-text">{{ tarea.descripcion }}</p>
+            <a href="#"> {{ tarea.template }} </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</div>
+{% endfor %}

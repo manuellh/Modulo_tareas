@@ -1,0 +1,27 @@
+<h1>  {{ titulo }}</h1>
+
+<h2>  {{ descripcion }}</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <a href="{{ path('lista_tareas.form_crear_tarea') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Crear tarea</a>
+    </div>
+
+    <section>
+      <div class="col-sm-12">
+        {% for tarea in tareas %}
+        <div class="list-group">
+          <a href="{{ path('lista_tareas.mostrar_tarea', {'id': tarea.id}) }}" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{ tarea.nombre }}</h5>
+            </div>
+            <p class="mb-1">{{ tarea.descripcion }}</p>
+            <small>{{ tarea.fecha_entrega }}</small>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</div>

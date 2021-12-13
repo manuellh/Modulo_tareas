@@ -1,0 +1,22 @@
+<?php
+
+function lista_tareas_theme($existing, $type, $theme, $path) {
+  return [
+    # 'my_template' es el nombre de la plantilla creada si se usan guiones bajos asegúrese de que en el archivo
+    # sean sustituidos por guiones medios. Lo recomendable es no usar guiones en el nombre del archivo.
+    'profesor/tareas' => [
+      'variables' => [ //variables que se pasaran a la plantilla html.twig
+        'titulo' => 'Actividades',
+        'tareas' => NULL,
+      ],
+    ],
+    'profesor/tareas_show' => [
+      'variables' => [ //variables que se pasaran a la plantilla html.twig
+        'titulo' => '',
+        'tareas' => NULL,
+      ],
+    ],
+  ];
+}
+
+?>

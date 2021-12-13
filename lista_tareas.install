@@ -1,0 +1,91 @@
+<?php
+
+//Estructura de la tabla tareas esta estructura crea una tabla tareas dentro de la base de datos
+
+/**
+ * Implment hook_schema()
+ */
+function lista_tareas_schema() {
+  $schema['tareas'] = array(
+    'description' => 'Guarda las tareas',
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Identificador único del participante.',
+      ),
+      //Nombre de la tarea
+      'nombre' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      //Fecha de entrega de la tarea
+      'fecha_entrega' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      //Descripcion de la tarea
+      'descripcion' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      //Template de la tarea
+      'template' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(
+      'nombre' => array('nombre'),
+      'fecha_entrega' => array('fecha_entrega'),
+      'descripcion' => array('descripcion'),
+      'template' => array('template'),
+    ),
+  );
+  return $schema;
+}
+
+/**
+ *  hook_install()
+ */
+function lista_tareas_install() {
+  //Valores a insertar por defecto
+  $values = [
+    [
+      'nombre' => 'nombre',
+      'fecha_entrega' => 'fecha_entrega',
+      'descripcion' => 'descripcion',
+      'template' => 'template',
+    ],
+    [
+      'nombre' => 'nombre 2',
+      'fecha_entrega' => 'fecha_entrega 2',
+      'descripcion' => 'descripcion 2',
+      'template' => 'template 2',
+    ]
+
+  ];
+  $database = \Drupal::database();
+  $query = $database->insert('tareas')->fields([
+    'nombre',
+    'fecha_entrega',
+    'descripcion',
+    'template',
+  ]);
+  foreach ($values as $tarea) {
+    $query->values($tarea);
+  }
+  $query->execute();
+}
+
+ ?>

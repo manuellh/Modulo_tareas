@@ -1,0 +1,5 @@
+name: Tareas
+descripcion: Creacion de un sistema para asignar tareas
+package: Mis Modulos
+type: module
+core_version_requirement: ^8.8 || ^9

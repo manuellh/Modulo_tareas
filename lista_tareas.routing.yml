@@ -1,0 +1,45 @@
+#LISTA DE RUTAS DEL SISTEMA
+
+lista_tareas.form:
+    path: '/asignar-tarea'
+    defaults:
+        _title: 'Asignar tarea'
+        _form: '\Drupal\lista_tareas\Form\TareasForm'
+    requirements:
+        _permission : 'access content'
+
+
+lista_tareas.form_crear_tarea:
+    path: '/classroom2/crear-tarea'
+    defaults:
+        _title: 'Crear tarea'
+        _form: '\Drupal\lista_tareas\Form\CrearTarea'
+    requirements:
+        _permission : 'access content'
+
+
+lista_tareas.template_template:
+  path: '/classroom2/tareas'
+  defaults:
+    _controller: '\Drupal\lista_tareas\Controller\ProfesorController::template'
+    _title: 'Lisado de actividades'
+  requirements:
+    _permission: 'access content'
+
+
+lista_tareas.mostrar_tarea:
+    path: '/classroom2/{id}/show'
+    defaults:
+        _title: 'Tarea'
+        _controller: '\Drupal\lista_tareas\Controller\ProfesorController::show'
+    requirements:
+        _permission : 'access content'
+
+
+lista_tareas.edit_form:
+    path: '/classroom2/editar-tarea/{id}'
+    defaults:
+        _title: 'Editar tarea'
+        _form: '\Drupal\lista_tareas\Form\EditTarea'
+    requirements:
+        _permission : 'access content'
